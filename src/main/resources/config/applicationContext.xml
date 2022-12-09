@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+  
+<bean id="employeebean" class="com.dto.Employee">  
+<!-- <property name="name" > <value>ssasfd</value></property>  
+<property name="id"  ><value>33</value></property>   -->
+ <!-- <constructor-arg name="name" value="ff" ></constructor-arg>
+<constructor-arg name="id" value="10" type ="int" ></constructor-arg>  -->
+</bean>  
+
+<bean id="ds"
+	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<property name="driverClassName"
+		value="oracle.jdbc.driver.OracleDriver" />
+	<property name="url"
+		value="jdbc:oracle:thin:@211.115.92.145:1521:wow0923" />
+	<property name="username" value="WOWNET_v6" />
+	<property name="password" value="025558406!" />
+</bean>  
+
+<bean id="jdbcTemplate"
+	class="org.springframework.jdbc.core.JdbcTemplate">
+	<property name="dataSource" ref="ds"></property>
+</bean>
+
+<bean id = "edao" class = "com.dao.EmployeeDao">
+<property name ="jdbcTemplate" ref = "jdbcTemplate"></property>
+</bean>
+
+  
+</beans>  
